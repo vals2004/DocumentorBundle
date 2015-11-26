@@ -1,6 +1,6 @@
 <?php
 
-namespace Aga\DocumentorBundle;
+namespace Documentor\Bundle\DocumentorBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

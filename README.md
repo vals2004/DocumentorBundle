@@ -11,8 +11,8 @@ Basic Usage
 -----------
 
 1. Install and enable the bundle for your project's development environment
-2. Run `app/consoledocumentation:create` to generate the documentation for files located in `./src`
-3. Your project documentation is now available at `web/bundles/documentor` or http://yourproject.dev/app\_dev.php/bundles/documentor/index.html
+2. Run `app/console documentation:create` to generate the documentation for files located in `./src`
+3. Your project documentation is now available at `web/bundles/documentor` or http://yourproject.dev/app_dev.php/bundles/documentor/index.html
 
 
 Features
@@ -31,8 +31,6 @@ Requirements
 DocumentorBundle requires the following:
 
 * PHP 5.3.3 or higher
-* [phpDocumentor2](https://github.com/phpDocumentor/phpDocumentor2) 
-* phpDocumentor2 should be callable as `phpdoc` from the CLI
 
 
 Installation
@@ -45,7 +43,7 @@ The suggested install method is via [Composer](http://getcomposer.org)
     ```js
     {
         "require-dev": {
-            "artur-gajewski/phpdocumentor-bundle": "dev-master"
+            "timhovius/phpdocumentor-bundle": "~1.0"
         }
     }
     ```
@@ -67,7 +65,7 @@ The suggested install method is via [Composer](http://getcomposer.org)
 
             if (in_array($this->getEnvironment(), array('dev', 'test'))) {
                 // ...
-                $bundles[] = new Aga\DocumentorBundle\DocumentorBundle();
+                $bundles[] = new Documentor\Bundle\DocumentorBundle\DocumentorBundle();
             }
         }
     ```
@@ -85,17 +83,3 @@ $ app/console documentation:create
 This command will generate documentation for all files in the `src/` directory.
 
 After generating the documentation, the command executes `app/console assets:install` to copy the newly generated documentation to `web/bundles/documentor`, where you can access it from disk or via your project's website at http://yourproject.dev/app_dev.php/bundles/documentor/index.html
-
-
-Contact
--------
-
-* Twitter: [@GajewskiArtur](http://twitter.com/GajewskiArtur)
-* Github: <https://github.com/artur-gajewski>
-* E-mail:  [info@arturgajewski.com](mailto:info@arturgajewski.com)
-
-
-Want to contribute?
--------------------
-
-If you want to contribute to this project then just fork it, modify it and send a pull request. It's dead simple!

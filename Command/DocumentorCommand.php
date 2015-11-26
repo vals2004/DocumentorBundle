@@ -1,6 +1,6 @@
 <?php
 
-namespace Aga\DocumentorBundle\Command;
+namespace Documentor\Bundle\DocumentorBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -30,17 +30,18 @@ class DocumentorCommand extends ContainerAwareCommand {
         $this->setName('documentation:create')
              ->setDescription('Creates project documentation with phpDocumentor2 accessible with project\'s url.');
     }
-    
+
     /**
      * Execution of the console command
-     * 
+     *
      * This function checks all source code from the src folder, ignores this bundle's
      * files, and generates documentation HTML with phpDocumentor2.
-     * 
+     *
      * After a successful operation, it will install assets with app/console assets:install
-     * 
+     *
      * @param InputInterface $input
-     * @param OutputInterface $output 
+     * @param OutputInterface $output
+     * @return void
      */
     protected function execute(InputInterface $input, OutputInterface $output) 
     {
@@ -49,13 +50,14 @@ class DocumentorCommand extends ContainerAwareCommand {
         $rootDir = $this->getContainer()->get('kernel')->getRootDir();
         
         $source = realpath($rootDir . '/../src');
+        $bin = realpath($rootDir . '/../bin');
         $target = realpath(__DIR__ . '/../Resources/public');
         
         $configFile = realpath($rootDir . '/../phpdoc.dist.xml');
         if (file_exists($configFile)) {
-            $command = 'phpdoc -c ' . $configFile . ' -t ' . $target;
+            $command = $bin . '/' .'phpdoc -c ' . $configFile . ' -t ' . $target;
         } else {
-            $command = 'phpdoc -d ' . $source . ' -t ' . $target;
+            $command = $bin . '/' . 'phpdoc -d ' . $source . ' -t ' . $target;
         }
         
         $process = new Process($command);
