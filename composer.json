@@ -22,7 +22,7 @@
 
     "require": {
         "php": ">=5.3.3",
-        "phpdocumentor/phpdocumentor": "*"
+        "phpdocumentor/phpdocumentor": "2.9.0"
     },
 
     "autoload": {
